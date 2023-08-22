@@ -8,6 +8,8 @@ import { useAppSelector } from "../../hooks/redux";
 
 export const NavigationComponent = (): React.JSX.Element => {
   const { token, user } = useAppSelector((state) => state.authReducer);
+  const { cart } = useAppSelector((state) => state.cartReducer);
+  console.log("cart", cart);
   return (
     <nav className="w-full fixed  top-0 left-0 right-0 z-50 flex items-center justify-between  h-[50px] bg-white   shadow-xl  px-1 xl:px-20 ">
       <div className="flex  justify-between text-gray-700  mx-5 xl:mx-20 w-full">
@@ -26,8 +28,22 @@ export const NavigationComponent = (): React.JSX.Element => {
             </Link>
           )}
 
-          <Link to={"/cart"} className="ms-5">
-            <img src={IconCart} width={24} height={24} alt="Cart" />
+          <Link to={"/cart"} className="ms-5 relative">
+            <img
+              src={IconCart}
+              width={24}
+              height={24}
+              alt="Cart"
+              className=""
+            />
+            {cart && cart.products.length > 0 && (
+              <div className="rounded-full bg-red-700 text-white font-bold text-sm absolute bottom-[-10px] right-[-10px] w-[20px] h-[20px] text-center">
+                {cart.products.reduce(
+                  (sum, current) => sum + current.quantity,
+                  0,
+                )}
+              </div>
+            )}
           </Link>
         </div>
       </div>

@@ -7,12 +7,14 @@ import { LoginScreen } from "./modules/screens/login.screen";
 import { UserSettingsScreen } from "./modules/screens/user-settings.screen";
 import { useAppDispatch } from "./hooks/redux";
 import { checkUserSession } from "./store/reducers/user-slice";
+import { checkCartStorage } from "./store/reducers/cart-slice";
 
 const App = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(checkUserSession());
+    dispatch(checkCartStorage());
   }, []);
   return (
     <div className="relative  h-screen w-screen overflow-x-hidden">

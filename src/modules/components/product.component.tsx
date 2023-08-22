@@ -1,13 +1,33 @@
 import React from "react";
 import { IProduct } from "../../models/products";
 import { Link } from "react-router-dom";
-import IconPlus from "../../images/icons/plus.svg";
+import { useAppDispatch, useAppSelector } from "../../hooks/redux";
+import { ICartProduct } from "../../models/cart";
+import { addProduct, deleteProduct } from "../../store/reducers/cart-slice";
+import { CounterComponent } from "./counter.component";
 
 export declare type ProductComponentProps = { product: IProduct };
 export const ProductComponent = ({
   product,
 }: ProductComponentProps): React.JSX.Element => {
-  const handleAddProduct = () => {};
+  const { user } = useAppSelector((state) => state.authReducer);
+  const { cart } = useAppSelector((state) => state.cartReducer);
+
+  const dispatch = useAppDispatch();
+  const handleMinusProduct = () => {
+    if (user) {
+    } else {
+      const productNew: ICartProduct = { productId: product.id, quantity: 1 };
+      dispatch(deleteProduct({ newProduct: productNew }));
+    }
+  };
+  const handleAddProduct = () => {
+    if (user) {
+    } else {
+      const productNew: ICartProduct = { productId: product.id, quantity: 1 };
+      dispatch(addProduct({ newProduct: productNew }));
+    }
+  };
   return (
     <div className="rounded shadow-md p-5 h-[500px] flex-col">
       <div className=" h-[350px] p-5 flex justify-center">
@@ -28,9 +48,16 @@ export const ProductComponent = ({
         </div>
         <div className="w-full h-full flex justify-between align-middle">
           <div className=" text-sm text-slate-600">{`${product.price}  $`}</div>
-          <button onClick={handleAddProduct}>
-            <img src={IconPlus} alt="add to cart" width={24} height={24} />
-          </button>
+          <CounterComponent
+            count={
+              cart
+                ? cart.products.find((pr) => pr.productId === product.id)
+                    ?.quantity || 0
+                : 0
+            }
+            onPlus={handleAddProduct}
+            onMinus={handleMinusProduct}
+          />
         </div>
       </div>
     </div>
