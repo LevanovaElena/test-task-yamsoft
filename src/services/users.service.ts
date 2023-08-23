@@ -1,7 +1,15 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
 import { BASE_URL } from "../configure";
-import { UserList } from "../models/users";
+import { IUser, UserList } from "../models/users";
 import { IParamsForProducts } from "../models/products";
+import axios from "axios";
+import { AppDispatch } from "../store/store";
+import {
+  setFullUserData,
+  userFetching,
+  userFetchingError,
+  userFetchingSuccess,
+} from "../store/reducers/user-slice";
 
 export const usersService = createApi({
   reducerPath: "user/api",
@@ -19,3 +27,16 @@ export const usersService = createApi({
   }),
 });
 export const { useGetAllUsersQuery } = usersService;
+
+export const getFullUser = async (userName: string, dispatch: AppDispatch) => {
+  try {
+    dispatch(userFetching());
+    const response = await axios.get<IUser[]>("https://fakestoreapi.com/users");
+    const fullUser = response.data.find((user) => user.username === userName);
+    dispatch(userFetchingSuccess());
+    dispatch(setFullUserData({ user: fullUser || null }));
+  } catch (error) {
+    console.log("error", error);
+    dispatch(userFetchingError());
+  }
+};

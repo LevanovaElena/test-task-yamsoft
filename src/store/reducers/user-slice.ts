@@ -1,42 +1,23 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IUser } from "../../models/users";
-type AuthState = {
+import {
+  deleteUserSession,
+  getUserSession,
+  setUserSession,
+} from "../../utils/user.utils";
+export type AuthState = {
   user: IUser | null;
   token: string | null;
+  isLoadingUser?: boolean;
+  isLoadingError?: boolean;
 };
 
 const initialState = {
   user: null,
   token: null,
+  isLoadingUser: false,
+  isLoadingError: false,
 } as AuthState;
-
-export const getUserSession = () => {
-  const token = localStorage.getItem("app_token");
-  if (token) {
-    const timeStart = new Date(
-      Number(localStorage.getItem("app_token_start_session")),
-    );
-    const user = localStorage.getItem("app_token_username");
-    if (new Date().getTime() - timeStart.getTime() <= 1800000 && user) {
-      const initialState: AuthState = {
-        user: { username: user, password: "" },
-        token: token,
-      };
-      return initialState;
-    }
-  }
-  return null;
-};
-export const setUserSession = (username: string, token: string) => {
-  localStorage.setItem("app_token", token);
-  localStorage.setItem("app_token_start_session", String(new Date().getTime()));
-  localStorage.setItem("app_token_username", username);
-};
-export const deleteUserSession = () => {
-  localStorage.setItem("app_token", "");
-  localStorage.setItem("app_token_start_session", "");
-  localStorage.setItem("app_token_username", "");
-};
 
 const authSlice = createSlice({
   name: "auth",
@@ -52,6 +33,12 @@ const authSlice = createSlice({
       state.token = token;
       setUserSession(user?.username || "", token || "");
     },
+    setFullUserData: (
+      state,
+      { payload: { user } }: PayloadAction<{ user: IUser | null }>,
+    ) => {
+      state.user = user;
+    },
     checkUserSession: (state) => {
       const saveData = getUserSession();
       if (saveData) {
@@ -65,8 +52,27 @@ const authSlice = createSlice({
       state.token = null;
       deleteUserSession();
     },
+    userFetching: (state) => {
+      state.isLoadingUser = true;
+    },
+    userFetchingSuccess: (state) => {
+      state.isLoadingUser = false;
+    },
+    userFetchingError: (state) => {
+      console.log("!!!!");
+      state.isLoadingError = true;
+      state.isLoadingUser = false;
+    },
   },
 });
 
-export const { setCredentials, checkUserSession, signUp } = authSlice.actions;
+export const {
+  setCredentials,
+  checkUserSession,
+  signUp,
+  setFullUserData,
+  userFetching,
+  userFetchingError,
+  userFetchingSuccess,
+} = authSlice.actions;
 export default authSlice.reducer;

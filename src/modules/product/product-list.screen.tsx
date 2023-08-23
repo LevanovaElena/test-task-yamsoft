@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { ProductComponent } from "../components/product.component";
+import { ProductComponent } from "./product.component";
 import { useGetProductsListQuery } from "../../services/products.api";
 import useInfiniteScroll from "react-infinite-scroll-hook";
-import { LoadingComponent } from "../components/loading.component";
+import { LoadingComponent } from "../common/loading.component";
 
 export const ProductListScreen = (): React.JSX.Element => {
   const [limit, setLimit] = useState(5);

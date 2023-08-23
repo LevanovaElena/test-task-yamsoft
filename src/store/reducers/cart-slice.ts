@@ -4,7 +4,7 @@ import {
   deleteCartStorage,
   getCartStorage,
   setCartStorage,
-} from "../../utils/cart-storage.utils";
+} from "../../utils/cart.utils";
 
 type CartState = {
   cart: ICart | null;

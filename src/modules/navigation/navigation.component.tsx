@@ -9,7 +9,6 @@ import { useAppSelector } from "../../hooks/redux";
 export const NavigationComponent = (): React.JSX.Element => {
   const { token, user } = useAppSelector((state) => state.authReducer);
   const { cart } = useAppSelector((state) => state.cartReducer);
-  console.log("cart", cart);
   return (
     <nav className="w-full fixed  top-0 left-0 right-0 z-50 flex items-center justify-between  h-[50px] bg-white   shadow-xl  px-1 xl:px-20 ">
       <div className="flex  justify-between text-gray-700  mx-5 xl:mx-20 w-full">

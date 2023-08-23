@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import { ICartProduct } from "../../models/cart";
 import { addProduct, deleteProduct } from "../../store/reducers/cart-slice";
-import { CounterComponent } from "./counter.component";
+import { CounterComponent } from "../common/counter.component";
 
-export declare type CardItemProps = { product: IProduct };
-export const CardItem = ({ product }: CardItemProps): React.JSX.Element => {
+export declare type CartItemProps = { product: IProduct };
+export const CartItem = ({ product }: CartItemProps): React.JSX.Element => {
   const { cart } = useAppSelector((state) => state.cartReducer);
 
   const dispatch = useAppDispatch();

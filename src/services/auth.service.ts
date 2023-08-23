@@ -14,15 +14,6 @@ export const authService = createApi({
       }),
       //transformResponse(response:ProductsList)=>response.items;//для изменения данных в итоге
     }),
-    /* getProductsListByCategory: build.query<ProductsList, IParamsForProducts>({
-            query: ({category, limit, sort}: IParamsForProducts) => ({
-                url: `services/category/${category}`,
-                params: {
-                    limit: limit,
-                    sort: sort || 'desc'
-                }
-            }),
-        }),*/
   }),
 });
 export const { useLoginMutation } = authService;

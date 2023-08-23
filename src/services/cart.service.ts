@@ -1,6 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
 import { BASE_URL } from "../configure";
-import { ILogin } from "../models/users";
 import { ICart } from "../models/cart";
 
 export const cartService = createApi({
@@ -27,7 +26,7 @@ export const cartService = createApi({
         method: "DELETE",
       }),
     }),
-    getUserCart: build.query<ICart, { idUser: number }>({
+    getUserCart: build.query<ICart[], { idUser: number }>({
       query: ({ idUser }) => ({
         url: `carts/user/${idUser}`,
       }),

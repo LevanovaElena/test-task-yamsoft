@@ -3,7 +3,7 @@ import { IProduct } from "../../models/products";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import { ICartProduct } from "../../models/cart";
 import { addProduct, deleteProduct } from "../../store/reducers/cart-slice";
-import { CounterComponent } from "./counter.component";
+import { CounterComponent } from "../common/counter.component";
 import { ProductCaptionComponent } from "./product-caption.component";
 
 export declare type ProductComponentProps = { product: IProduct };
