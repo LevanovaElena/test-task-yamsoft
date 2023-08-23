@@ -18,14 +18,15 @@ export const ButtonComponent = ({
     let colorBtn = "bg-gray-600";
     switch (color) {
       case "red":
-        colorBtn = "bg-red-500 text-white hover:bg-red-200";
+        colorBtn =
+          "bg-red-500 text-white hover:bg-red-400 border-red-500 hover:border-red-400";
         break;
       case "gray":
-        colorBtn = "bg-gray-600 text-white hover:bg-gray-400";
+        colorBtn =
+          "bg-gray-600 text-white hover:bg-gray-400 border-gray-600 hover:border-gray-400";
         break;
       case "white":
-        colorBtn =
-          "bg-white text-gray-600 hover:bg-gray-10 border-2 border-gray-500";
+        colorBtn = "bg-white text-gray-600 hover:bg-gray-100  border-gray-500 ";
         break;
     }
     let sizeBtn = "";
@@ -40,7 +41,7 @@ export const ButtonComponent = ({
         sizeBtn = "py-3 px-5 text-2xl";
         break;
     }
-    return `rounded-lg font-bold ${colorBtn} ${sizeBtn} ${className}`;
+    return `rounded-lg font-bold border-2 ${colorBtn} ${sizeBtn} ${className}`;
   };
   return (
     <button

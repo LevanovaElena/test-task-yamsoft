@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { UserProfileForm } from "./user-profile-form.component";
 import { getFullUser } from "../../services/users.service";
 import { LoadingComponent } from "../common/loading.component";
-export const UserSettingsScreen = (): React.JSX.Element | null => {
+export const UserProfileScreen = (): React.JSX.Element | null => {
   const { user, isLoadingUser } = useAppSelector((state) => state.authReducer);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();

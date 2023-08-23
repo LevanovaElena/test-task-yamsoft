@@ -30,7 +30,9 @@ export const CartScreen = (): React.JSX.Element => {
         }
       >
         <div className="flex flex-col justify-start rounded shadow-2xl w-[500px] h-auto  p-3 md:p-10 justify-between ">
-          <h2 className="text-2xl mb-4 font-bold text-gray-700">Profile</h2>
+          <h2 className="text-2xl mb-4 font-bold text-gray-700">
+            Cart is Empty
+          </h2>
           <p className="text-xl ">
             Find product on{" "}
             <Link className={"hover:underline"} to={"/"}>
@@ -89,12 +91,12 @@ export const CartScreen = (): React.JSX.Element => {
       <ModalComponent
         message={"Thank You for your order!"}
         isOpen={open}
-        onClose={() => {
+        onOk={() => {
           dispatch(deleteCart());
           setOpen(false);
           navigate("/");
         }}
-        closeButtonCaption={"OK"}
+        okButtonCaption={"OK"}
         type={"simple"}
       />
     </div>

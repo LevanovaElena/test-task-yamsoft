@@ -20,22 +20,11 @@ export const LoginScreen = (): React.JSX.Element => {
   );
 
   useEffect(() => {
-    console.log(isLoadingError);
     if (isLoadingError) setOpen(isLoadingError);
   }, [isLoadingError]);
-  /*  useEffect(() => {
-    setOpen(isError);
-  }, [isError]);*/
-  //const { cart } = useAppSelector((state) => state.cartReducer);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  /*
-  console.log("user", user);
-  const { refetch: refetchCart } = useGetUserCartQuery({
-    idUser: user?.id || 0,
-  });*/
 
-  //const [updateCart, { isSuccess, data: newCart }] = useUpdateCartMutation();
   const handleLogin = async (userName: string, password: string) => {
     const loginData: ILogin = { username: userName, password: password };
 
@@ -52,23 +41,7 @@ export const LoginScreen = (): React.JSX.Element => {
       navigate(-1);
     } catch (e) {
       setOpen(true);
-      console.log("error2", error);
     }
-
-    /*      if (user && user.id) {
-        const { data } = await refetchCart();
-
-        console.log("cartsOfUsers", data);
-        console.log("fulluser", user);
-        if (data && data.length === 1 && cart) {
-          const cartFromApi = { ...data[0] };
-          cartFromApi.products = [...data[0].products, ...cart.products];
-          cartFromApi.date = new Date().toDateString();
-          await updateCart({ idCart: data[0].id, newCart: cartFromApi });
-          console.log("newCart", newCart);
-          if (newCart) dispatch(setCart({ cart: newCart }));
-        }
-      }*/
   };
 
   return (
@@ -80,12 +53,12 @@ export const LoginScreen = (): React.JSX.Element => {
       <ModalComponent
         message={"Something went wrong. Please, login again!"}
         isOpen={open}
-        onClose={() => {
+        onOk={() => {
           setOpen(false);
           dispatch(signUp());
           navigate("/login");
         }}
-        closeButtonCaption={"OK"}
+        okButtonCaption={"OK"}
         type={"danger"}
       />
       {isLoadingUser ? (

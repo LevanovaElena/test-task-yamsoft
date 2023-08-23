@@ -31,7 +31,10 @@ export const ProductComponent = ({
   };
   return (
     <div className="rounded shadow-md p-5 h-[500px] flex-col">
-      <ProductCaptionComponent product={product} />
+      <ProductCaptionComponent
+        product={product}
+        addProduct={handleAddProduct}
+      />
       <div className="flex-col">
         <div className="w-full h-full flex justify-between align-middle">
           <div className=" text-sm text-slate-600">{`${product.price}  $`}</div>
