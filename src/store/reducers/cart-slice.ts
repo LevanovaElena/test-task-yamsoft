@@ -75,7 +75,7 @@ const cartSlice = createSlice({
               currentCard.products.length === 1
                 ? []
                 : currentCard.products.filter(
-                    (pr) => pr.productId === newProduct.productId,
+                    (pr) => pr.productId !== newProduct.productId,
                   );
             console.log(currentCard.products);
           }

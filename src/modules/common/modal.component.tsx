@@ -21,37 +21,36 @@ export const ModalComponent = ({
   type = "simple",
   closeButtonCaption = "Cancel",
 }: ModalComponentProps): React.JSX.Element | null => {
-  console.log("open", isOpen);
   if (!isOpen) return null;
   return createPortal(
     <div
-      className={`absolute rounded shadow-xl max-w-lg  h-auto top-1/3 left-0 sm:left-1/4 md:left-1/3 p-6 flex flex-col ${
-        type === "danger"
-          ? "bg-gradient-to-b from-red-500 to-red-200 text-white"
-          : "bg-gradient-to-b from-gray-200 to-white"
+      className={`absolute rounded-md shadow-2xl w-auto   right-0 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-7   bg-white ${
+        type === "danger" ? "shadow-red-700 " : "shadow-gray-700 "
       }`}
     >
-      <span className="text-2xl text-start">{message}</span>
-      <div className={"grid grid-cols-2"}>
-        <div className={"flex justify-start"}>
-          {onOk && (
+      <div className={"h-full flex flex-col"}>
+        <span className="text-2xl text-start block ">{message}</span>
+        <div className={"grid grid-cols-2 grid-rows-1 "}>
+          <div className={"flex justify-start items-end"}>
+            {onOk && (
+              <ButtonComponent
+                caption={okButtonCaption}
+                onClick={onOk}
+                color={type === "danger" ? "red" : "gray"}
+                size={"md"}
+                className="w-auto "
+              />
+            )}
+          </div>
+          <div className={"flex justify-end"}>
             <ButtonComponent
-              caption={okButtonCaption}
-              onClick={onOk}
+              caption={closeButtonCaption}
+              onClick={onClose}
               color={type === "danger" ? "red" : "gray"}
               size={"md"}
-              className="w-auto mt-10"
+              className="w-full mt-10 "
             />
-          )}
-        </div>
-        <div className={"flex justify-end"}>
-          <ButtonComponent
-            caption={closeButtonCaption}
-            onClick={onClose}
-            color={type === "danger" ? "red" : "gray"}
-            size={"md"}
-            className="w-full mt-10 float-left"
-          />
+          </div>
         </div>
       </div>
     </div>,

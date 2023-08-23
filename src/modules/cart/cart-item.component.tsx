@@ -6,10 +6,11 @@ import { ICartProduct } from "../../models/cart";
 import { addProduct, deleteProduct } from "../../store/reducers/cart-slice";
 import { CounterComponent } from "../common/counter.component";
 
-export declare type CartItemProps = { product: IProduct };
-export const CartItem = ({ product }: CartItemProps): React.JSX.Element => {
-  const { cart } = useAppSelector((state) => state.cartReducer);
-
+export declare type CartItemProps = { product: IProduct; count: number };
+export const CartItem = ({
+  product,
+  count,
+}: CartItemProps): React.JSX.Element => {
   const dispatch = useAppDispatch();
   const handleMinusProduct = () => {
     const productNew: ICartProduct = {
@@ -38,7 +39,7 @@ export const CartItem = ({ product }: CartItemProps): React.JSX.Element => {
           />
         </div>
         <div className="flex flex-col justify-between ">
-          <div className="max-w-md">
+          <div className="max-w-md mt-5">
             <Link
               to={`/product/${product.id}`}
               className="hover:underline text-ellipsis break-words font-bold text-slate-700 leading-snug uppercase py-3 "
@@ -47,21 +48,21 @@ export const CartItem = ({ product }: CartItemProps): React.JSX.Element => {
             </Link>
             <div className=" text-md text-slate-600 pt-2">{`${product.price}  $`}</div>
           </div>
-          <div className="pb-5">
+          <div className="flex justify-start items-center pb-5 mt-3">
             <CounterComponent
-              count={
-                cart
-                  ? cart.products.find((pr) => pr.productId === product.id)
-                      ?.quantity || 0
-                  : 0
-              }
+              count={count}
               onPlus={handleAddProduct}
               onMinus={handleMinusProduct}
             />
+            <div className=" sm:hidden text-lg font-bold text-slate-600 ms-10">{`${
+              product.price * count
+            } $`}</div>
           </div>
         </div>
       </div>
-      <div className="flex  justify-center align-middle items-center text-lg font-bold text-slate-600">{`${product.price}`}</div>
+      <div className="  hidden sm:flex justify-center items-center  text-lg font-bold text-slate-600">{`${
+        product.price * count
+      }`}</div>
     </div>
   );
 };

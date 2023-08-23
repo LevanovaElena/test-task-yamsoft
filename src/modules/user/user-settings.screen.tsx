@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import { signUp } from "../../store/reducers/user-slice";
 import { useNavigate } from "react-router-dom";
-import { UserSettingsForm } from "./user-settings-form.component";
+import { UserProfileForm } from "./user-profile-form.component";
 import { getFullUser } from "../../services/users.service";
 import { LoadingComponent } from "../common/loading.component";
 export const UserSettingsScreen = (): React.JSX.Element | null => {
@@ -35,10 +35,10 @@ export const UserSettingsScreen = (): React.JSX.Element | null => {
     return (
       <div
         className={
-          "flex justify-center  md:flex-row py-20 px-10 lg:px-20 xl:mx-20 "
+          "flex justify-center  md:flex-row p-2 py-20 md:p-20 lg:px-20 xl:mx-20 "
         }
       >
-        <UserSettingsForm
+        <UserProfileForm
           handleSubmit={handleSignUp}
           title={"Sign Up"}
           error={""}

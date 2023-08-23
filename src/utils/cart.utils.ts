@@ -19,8 +19,9 @@ export const getSumProducts = (products: ICartProduct[]) => {
 };
 
 export const getTotalPrice = (products: ICartProduct[]) => {
-  return products.reduce(
+  const sum = products.reduce(
     (sum, current) => sum + current.product.price * current.quantity,
     0,
   );
+  return Math.round(sum * 100) / 100;
 };

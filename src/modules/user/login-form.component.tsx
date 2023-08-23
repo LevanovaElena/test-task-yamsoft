@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useAppSelector } from "../../hooks/redux";
 import { useNavigate } from "react-router-dom";
+import { ButtonComponent } from "../common/button.component";
 
 export declare type LoginFormProps = {
   title: string;
@@ -24,7 +25,8 @@ export const LoginForm = ({
   );
 
   return (
-    <div className="flex flex-col justify-start rounded shadow-xl w-[500px] h-[500px] p-10 justify-between">
+    <div className="flex flex-col justify-start rounded shadow-2xl w-[500px] h-auto  p-3 md:p-10 justify-between ">
+      <h2 className="text-2xl mb-4 font-bold text-gray-700">Login</h2>
       <form>
         {error && (
           <div className="rounded border border-red-500 p-5 text-red-900 font-bold my-5">
@@ -57,29 +59,25 @@ export const LoginForm = ({
           />
         </div>
       </form>
-      <div className={"flex justify-between"}>
-        <button
-          type={"button"}
-          className={
-            "rounded bg-white text-white hover:bg-gray-100 p-2 w-1/3 text-gray-600 border-gray-600 border-2 text-xl"
-          }
+      <div className={"flex flex-col md:flex-row justify-between mt-2"}>
+        <ButtonComponent
+          caption={"Cancel"}
           onClick={() => {
             navigate(-1);
           }}
-        >
-          Cancel
-        </button>
-        <button
-          type={"button"}
-          className={
-            "rounded bg-gray-600 text-white hover:bg-gray-400 p-2 w-1/3 text-xl"
-          }
+          color={"white"}
+          size={"md"}
+          className={"mb-2 md:mb-0 md:w-1/3"}
+        />
+        <ButtonComponent
+          caption={title}
           onClick={() => {
             if (username && password) handleSubmit(username, password);
           }}
-        >
-          {title}
-        </button>
+          color={"gray"}
+          size={"md"}
+          className={"md:w-1/3"}
+        />
       </div>
     </div>
   );

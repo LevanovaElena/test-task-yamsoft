@@ -24,7 +24,8 @@ export const ButtonComponent = ({
         colorBtn = "bg-gray-600 text-white hover:bg-gray-400";
         break;
       case "white":
-        colorBtn = "bg-white text-gray-600 hover:bg-gray-10";
+        colorBtn =
+          "bg-white text-gray-600 hover:bg-gray-10 border-2 border-gray-500";
         break;
     }
     let sizeBtn = "";
@@ -33,13 +34,13 @@ export const ButtonComponent = ({
         sizeBtn = "p-1 text-md";
         break;
       case "md":
-        sizeBtn = "p-2 text-xl";
+        sizeBtn = "p-1 text-lg";
         break;
       case "lg":
-        sizeBtn = "p-3 text-2xl";
+        sizeBtn = "py-3 px-5 text-2xl";
         break;
     }
-    return `rounded ${colorBtn} ${sizeBtn} ${className}`;
+    return `rounded-lg font-bold ${colorBtn} ${sizeBtn} ${className}`;
   };
   return (
     <button
