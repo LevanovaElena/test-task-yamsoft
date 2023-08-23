@@ -29,30 +29,30 @@ export const LoginForm = ({
       <h2 className="text-2xl mb-4 font-bold text-gray-700">Login</h2>
       <form>
         {error && (
-          <div className="rounded border border-red-500 p-5 text-red-900 font-bold my-5">
+          <div className="rounded border border-red-500 p-5 text-red-600 font-bold my-5">
             {error}
           </div>
         )}
-        <div className="flex items-center  w-full mb-3 ">
-          <label htmlFor={"login"} className="w-1/4">
-            Enter Login
+        <div className="flex flex-col md:flex-row  items-start md:items-center  w-full mb-3 ">
+          <label htmlFor={"login"} className="w-full md:w-1/4 mb-2 md:mb-0">
+            Login
           </label>
           <input
             type="text"
-            className="border py-2 px-4 h-[42px] w-3/4"
+            className="border h-[42px] py-2 px-4 rounded w-full md:w-3/4"
             placeholder="Enter Email"
             value={username || ""}
             onChange={(e) => setUsername(e.target.value)}
             name={"login"}
           />
         </div>
-        <div className="flex items-center  w-full mb-3 ">
-          <label htmlFor={"login"} className="w-1/4">
-            Enter Password
+        <div className="flex flex-col md:flex-row  items-start md:items-center  w-full mb-3 ">
+          <label htmlFor={"login"} className="w-full md:w-1/4 mb-2 md:mb-0">
+            Password
           </label>
           <input
             type="password"
-            className="border py-2 px-4 h-[42px] w-3/4"
+            className="border h-[42px] py-2 px-4 rounded w-full md:w-3/4"
             placeholder="Enter Password"
             value={password || ""}
             onChange={(e) => setPassword(e.target.value)}

@@ -34,7 +34,7 @@ export const ButtonComponent = ({
         sizeBtn = "p-1 text-md";
         break;
       case "md":
-        sizeBtn = "p-1 text-lg";
+        sizeBtn = "p-2 text-lg";
         break;
       case "lg":
         sizeBtn = "py-3 px-5 text-2xl";
