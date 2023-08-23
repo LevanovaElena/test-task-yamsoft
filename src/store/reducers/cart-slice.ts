@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IUser } from "../../models/users";
 import { ICart, ICartProduct } from "../../models/cart";
 import {
   deleteCartStorage,
@@ -35,7 +34,7 @@ const cartSlice = createSlice({
       }
     },
     deleteCart: (state) => {
-      state = initialState;
+      state.cart = null;
       deleteCartStorage();
     },
     addProduct: (
@@ -51,13 +50,12 @@ const cartSlice = createSlice({
         else currentCard.products.push(newProduct);
         state.cart = currentCard;
       } else {
-        const newCart: ICart = {
+        state.cart = {
           date: new Date().toDateString(),
           id: -1,
           products: [newProduct],
           userId: -1,
         };
-        state.cart = newCart;
       }
       setCartStorage(state.cart);
     },

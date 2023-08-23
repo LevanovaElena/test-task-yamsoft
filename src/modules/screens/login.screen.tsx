@@ -12,19 +12,19 @@ export const LoginScreen = (): React.JSX.Element => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
+  //const {}=useGetUserCartQuery(user?.username)
   const handleLogin = async (userName: string, password: string) => {
     const loginData: ILogin = { username: userName, password: password };
     try {
       const token = await login(loginData).unwrap();
       const currentUser: IUser = { ...loginData };
-      console.log(currentUser);
       dispatch(
         setCredentials({
           user: currentUser || null,
           token: token?.token || null,
         }),
       );
-      navigate("/");
+      navigate(-1);
     } catch (err) {
       console.log(error);
     }

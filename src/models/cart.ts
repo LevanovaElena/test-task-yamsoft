@@ -1,3 +1,5 @@
+import { IProduct } from "./products";
+
 export interface ICart {
   id: number;
   userId: number;
@@ -8,4 +10,5 @@ export interface ICart {
 export interface ICartProduct {
   productId: number;
   quantity: number;
+  product: IProduct;
 }
