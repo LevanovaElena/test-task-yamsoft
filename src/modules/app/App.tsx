@@ -20,10 +20,10 @@ const App = () => {
     <div className="relative  h-screen w-screen overflow-x-hidden">
       <NavigationComponent />
       <Routes>
-        <Route path="/" element={<ProductListScreen />} />
         <Route path="/cart" element={<CartScreen />} />
         <Route path="/login" element={<LoginScreen />} />
         <Route path="/user-settings" element={<UserSettingsScreen />} />
+        <Route path="/" element={<ProductListScreen />} />
       </Routes>
     </div>
   );
