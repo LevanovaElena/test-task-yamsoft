@@ -1,7 +1,7 @@
 import React from "react";
 import { IProduct } from "../../models/products";
 import { Link } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../../hooks/redux";
+import { useAppDispatch } from "../../hooks/redux";
 import { ICartProduct } from "../../models/cart";
 import { addProduct, deleteProduct } from "../../store/reducers/cart-slice";
 import { CounterComponent } from "../common/counter.component";

@@ -3,7 +3,6 @@ import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import { CartItem } from "./cart-item.component";
 import { deleteCart } from "../../store/reducers/cart-slice";
 import { Link, useNavigate } from "react-router-dom";
-import { ButtonComponent } from "../common/button.component";
 import { getSumProducts, getTotalPrice } from "../../utils/cart.utils";
 import { ModalComponent } from "../common/modal.component";
 import { CartResultComponent } from "./cart-result.component";
