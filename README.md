@@ -1,4 +1,5 @@
 # Text Task 
+[![codecov](https://codecov.io/gh/LevanovaElena/test-task-yamsoft/graph/badge.svg?token=HRBLK8C9EK)](https://codecov.io/gh/LevanovaElena/test-task-yamsoft)
 
 ### Result
 
