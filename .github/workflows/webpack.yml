@@ -1,8 +1,6 @@
 name: NodeJS with Webpack
 
 on:
-  push:
-    branches: [ "develop" ]
   pull_request:
     branches: [ "develop" ]
 
@@ -23,14 +21,14 @@ jobs:
         node-version: ${{ matrix.node-version }}
 
       
-    - name: Build
-      run: |
-        npm install
-        npm run build
+    - name: Install dependencies
+      run: npm install
 
-    - name: Run the tests and generate coverage report
-      run: |
-        run: npm test --coverage --watchAll=false
+    - name: Run the tests
+      run: npm test --coverage --watchAll=false
+
+    - name: Build
+      run: npm run build
 
     - name: Upload coverage reports to Codecov
       uses: codecov/codecov-action@v3
