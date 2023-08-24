@@ -8,6 +8,7 @@ import { UserProfileScreen } from "../user/user-profile.screen";
 import { useAppDispatch } from "../../hooks/redux";
 import { checkUserSession } from "../../store/reducers/user-slice";
 import { checkCartStorage } from "../../store/reducers/cart-slice";
+import { NotFoundPageScreen } from "../not-found-page/not-found-page.screen";
 
 const App = () => {
   const dispatch = useAppDispatch();
@@ -24,6 +25,7 @@ const App = () => {
         <Route path="/login" element={<LoginScreen />} />
         <Route path="/user-settings" element={<UserProfileScreen />} />
         <Route path="/" element={<ProductListScreen />} />
+        <Route path="*" element={<NotFoundPageScreen />} />
       </Routes>
     </div>
   );

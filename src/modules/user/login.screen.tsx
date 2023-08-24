@@ -66,7 +66,7 @@ export const LoginScreen = (): React.JSX.Element => {
       ) : (
         <LoginForm
           handleSubmit={handleLogin}
-          title={"Submit"}
+          title={"Login"}
           error={getMessageOfError(error)}
           isLoading={true}
         />

@@ -7,6 +7,8 @@ export declare type FieldFormComponentProps = {
   value: string;
   id: string;
   className?: string;
+  readOnly?: boolean;
+  onChange?: (value: string) => void;
 };
 export const FieldFormComponent = ({
   type,
@@ -15,6 +17,8 @@ export const FieldFormComponent = ({
   value,
   id,
   className,
+  readOnly = true,
+  onChange,
 }: FieldFormComponentProps): React.JSX.Element => {
   return (
     <div className="flex flex-col md:flex-row  items-start md:items-center  w-full mb-3 ">
@@ -30,8 +34,11 @@ export const FieldFormComponent = ({
         }
         placeholder={placeholder || ""}
         value={value}
-        readOnly={true}
+        readOnly={readOnly}
         id={id}
+        onChange={(value) => {
+          onChange && onChange(value.target.value);
+        }}
       />
     </div>
   );

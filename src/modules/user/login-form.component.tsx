@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useAppSelector } from "../../hooks/redux";
 import { useNavigate } from "react-router-dom";
 import { ButtonComponent } from "../common/button.component";
+import { FieldFormComponent } from "../common/field-form.component";
 
 export declare type LoginFormProps = {
   title: string;
@@ -26,38 +27,32 @@ export const LoginForm = ({
 
   return (
     <div className="flex flex-col justify-start rounded shadow-2xl w-[500px] h-auto  p-3 md:p-10 justify-between ">
-      <h2 className="text-2xl mb-4 font-bold text-gray-700">Login</h2>
+      <h2 className="text-2xl mb-4 font-bold text-gray-700">{title}</h2>
       <form>
         {error && (
           <div className="rounded border border-red-500 p-5 text-red-600 font-bold my-5">
             {error}
           </div>
         )}
-        <div className="flex flex-col md:flex-row  items-start md:items-center  w-full mb-3 ">
-          <label htmlFor={"login"} className="w-full md:w-1/4 mb-2 md:mb-0">
-            Login
-          </label>
-          <input
-            type="text"
-            className="border h-[42px] py-2 px-4 rounded w-full md:w-3/4"
-            placeholder="Enter Email"
-            value={username || ""}
-            onChange={(e) => setUsername(e.target.value)}
-            name={"login"}
-          />
-        </div>
-        <div className="flex flex-col md:flex-row  items-start md:items-center  w-full mb-3 ">
-          <label htmlFor={"login"} className="w-full md:w-1/4 mb-2 md:mb-0">
-            Password
-          </label>
-          <input
-            type="password"
-            className="border h-[42px] py-2 px-4 rounded w-full md:w-3/4"
-            placeholder="Enter Password"
-            value={password || ""}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
+
+        <FieldFormComponent
+          type="text"
+          labelCaption={"Login"}
+          placeholder="Enter Login"
+          id={"login"}
+          value={username || ""}
+          readOnly={false}
+          onChange={setUsername}
+        />
+        <FieldFormComponent
+          type="password"
+          labelCaption={"Password"}
+          placeholder="Enter Password"
+          id={"password"}
+          value={password || ""}
+          readOnly={false}
+          onChange={setPassword}
+        />
       </form>
       <div className={"flex flex-col md:flex-row justify-between mt-2"}>
         <ButtonComponent
