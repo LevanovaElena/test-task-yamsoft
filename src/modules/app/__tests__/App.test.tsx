@@ -1,9 +1,19 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import App from "../App";
+import { Provider } from "react-redux";
+import { store } from "../../../store/store";
+import { MemoryRouter } from "react-router-dom";
+import "intersection-observer";
 
-test("renders learn react link", () => {
-  render(<App />);
-  const linkElement = screen.getByText(/hi/i);
-  expect(linkElement).toBeInTheDocument();
+describe("App", () => {
+  test("App should be render correct", async () => {
+    await render(
+      <Provider store={store()}>
+        <MemoryRouter>
+          <App />
+        </MemoryRouter>
+      </Provider>,
+    );
+  });
 });

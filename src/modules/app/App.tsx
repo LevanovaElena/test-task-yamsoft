@@ -18,7 +18,7 @@ const App = () => {
     dispatch(checkCartStorage());
   }, [dispatch]);
   return (
-    <div className="relative  h-screen w-screen overflow-x-hidden">
+    <div className="relative  h-screen w-screen overflow-x-hidden text-gray-700">
       <NavigationComponent />
       <Routes>
         <Route path="/cart" element={<CartScreen />} />
