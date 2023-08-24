@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/test-task-yamsoft/static/css/main.c5cf3eeb.css",
-    "main.js": "/test-task-yamsoft/static/js/main.b29e7760.js",
+    "main.js": "/test-task-yamsoft/static/js/main.012994cd.js",
     "index.html": "/test-task-yamsoft/index.html",
     "static/media/shopping-bag.svg": "/test-task-yamsoft/static/media/shopping-bag.fa29e213a356156535a225c86f5581e4.svg",
     "static/media/home.svg": "/test-task-yamsoft/static/media/home.d961760de6074bad48659bdfeacb099b.svg",
@@ -10,10 +10,10 @@
     "static/media/plus.svg": "/test-task-yamsoft/static/media/plus.eab0895a73c422c4ee7903347813844a.svg",
     "static/media/minus.svg": "/test-task-yamsoft/static/media/minus.2e9f3fdc06af994d2c36bfdd2b263516.svg",
     "main.c5cf3eeb.css.map": "/test-task-yamsoft/static/css/main.c5cf3eeb.css.map",
-    "main.b29e7760.js.map": "/test-task-yamsoft/static/js/main.b29e7760.js.map"
+    "main.012994cd.js.map": "/test-task-yamsoft/static/js/main.012994cd.js.map"
   },
   "entrypoints": [
     "static/css/main.c5cf3eeb.css",
-    "static/js/main.b29e7760.js"
+    "static/js/main.012994cd.js"
   ]
 }
